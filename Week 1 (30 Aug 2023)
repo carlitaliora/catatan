@@ -3,28 +3,85 @@
 ### 🗓️ Week 1: Introduction to Database (DB)
 
 #### 📍 Definition and Purpose of Database
-- _Database (DB) = a structured collection of data;
-meanwhile, database management system (DBMS) = software that manages and interacts with that data.
+- Database (DB) = a structured collection of data;
+- Database Management System (DBMS) = software that manages and interacts with that data.
 - DB is like the content of a book, DBMS is like the tools to read, write and organize the content, the interface to access a DB_
-
-
-
-
+- Components of DBMS:
+  * Collection of interrelated data
+  * Set of programs to access the data
+  * Convenient and efficient environment
+- Characteristic of managed data:
+  * highly valuable
+  * relatively large
+  * multiple access points
+- Sebelumm DBMS modern ditemukan, semua org bisa akses datanya, gaada hak akses, jdi ada bbrp tantangan yg muncul:
+  * data redundancy: information could be duplicated in multiple files, leading to multiple copies of the same data
+  * inconsistency: duplicated data could become inconsistent if 1 copy was edited and the other wasnt
+  * difficulty in accessing data
+  * need for new programs: every distinct operation required a separate program, kan ribet cuyyy elahhhh
+  * data isolation
+  * masalah integritas: mirip kyk inconsistency
+  * challenges with constraints: reducing adaptability
+  * atomicity of updates: "By using atomicity, you ensure that either the entire transaction is successfully completed—or that none of it was" - https://www.bmc.com/blogs/acid-atomic-consistent-isolated-durable/#:~:text=If%20a%20crash%20occurs%20during,that%20none%20of%20it%20was.
+  * concurrent access issues
+  * security problems
 
 #### 📍 View of Data
-- _Poin-poin Utama_
-- _Contoh/Use-Case_
-- _Catatan Tambahan_
+- a major purpose of a database system is to provide users with an abstract view of the data
+- data models = a conceptual framework that determines the structure, organization, and the flow of data in a system (kyk blueprint for designing databases)
+- data abstraction = hide the complexity of data structures to represent data in the db from users through several levels of abstraction.
+  Kayak abstraction di java lah, segala keribetannya diumpetin, user gaperlu tau seberapa ribet hidup lu di balik ini semua :)
+
+- Data = the actual information.
+- Data relationship = menjelaskan hubungan antara data 1 dgn yg lain.
+- Data semantic = the meaning of the data itself, data tsb merepresentasikan apa?
+- Data constraints = menjelaskan batasan2 data (misalnya umur mahasiswa gaboleh negatif atau floating).
+
+- Data model types:
+  * relational: organizes data into tables
+  * entity-relationship: mainly for db design, represents entities n how they relate to one another, visualized using ER diagrams
+  * object-based
+  * semi-structured
 
 #### 📍 DB Languages, Design, Architecture, and Users and Administrator
-- _Poin-poin Utama_
-- _Contoh/Use-Case_
-- _Catatan Tambahan_
+- Data Definition Language (DDL) = kumpulan instruksi untuk define database schema (https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/).
+DDL compiler generates a set of table templates stored in a data dictionary which contains metadata (data abt data): 
+  * database schema
+  * integrity constraints
+  * primary key (yg datanya bener2 unik)
+  * authorization (who can akses what)
+- Data Manipulation Language (DML) = language for accessing and updating the data organized by the appropriate data model, also know as query language (abis didefine, kita bisa manipulasi).
 
-... (dan seterusnya untuk sub-topik lainnya di Minggu 1)
+- SQL -> nonprocedural, designed for managing and querying data in relational databases, a query takes 1 or several tables as input and ALWAYS returns just 1 table.
+- the query returns the output table without detailing how the system should go about fetching the said data. DBMS just automatically determines the optimal path to obtain the results. 
 
----
+SQL juga punya kekurangan/ limitations:
+- can't take dynamic input from users
+- doesn't dictate how the results displayed to end users
+- doesn't handle networking tasks
+Jadi SQL cuma bisa manage dan querying data aja.
+Solusinya? pake dynamic SQL atau parameterized queries.
 
-(_Template di atas dapat diulangi untuk minggu-minggu berikutnya dengan topik dan sub-topik yang relevan._)
+DATABASE DESIGN:
+1. Logical design:
+  - entity: the things or objects, si tabel
+  - relationship: defines how entities relate to each other (misalnya "book" might have a "written by" relationship with "author")
+  - attribute: info / data about each entity, si kolom2 dalam tabel (misal entitas "book" attributenya "ISBN", "Title", dll)
+2. Physical design:
+- tables n indexes: deciding the optimal table structures, when to use indexes to enhance performance
+- storage: where data will physically be stored, misalnya SSD atau HDD storage
+- security: how data will be encrypted, who will have access and how that access will be managed, backup and recovery strategies
 
----
+Logical dulu baru fisik, krn ya kita harus tau dulu datanya ttng apaa, relasinya gmn, baru lanjut ke fisiknya
+
+DATABASE USERS:
+1. Naive users 
+- (tellers, agents, web users)
+- use application interfaces
+2. application programmers
+- write application program
+3. sophisticated users
+- (analysts)
+- use query tools
+4. database admin
+- use administration tools
